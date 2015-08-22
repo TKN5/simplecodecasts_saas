@@ -13,15 +13,15 @@ class ContactsController < ApplicationController
       
       ContactMailer.contact_email(name, email, body).deliver
       
-      flash[:info] = "Please proceed to the next page."
+      flash[:sucess] = "Please proceed to the next page."
       redirect_to new_contact_path
     else
       flash[:danger] = "Error occurred, message has not been sent."
       redirect_to new_contact_path
     end
   end
-    
-  private 
+  
+    private 
     def contact_params
       params.require(:contact).permit(:name, :email, :comments)
     end
